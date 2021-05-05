@@ -64,9 +64,10 @@ class CupcakeViewsTestCase(TestCase):
                         "rating": 5,
                         "image": "http://test.com/cupcake.jpg"
                     }
+            
                 ]
             })
-
+    print("LISTO")
     def test_get_cupcake(self):
         with app.test_client() as client:
             url = f"/api/cupcakes/{self.cupcake.id}"

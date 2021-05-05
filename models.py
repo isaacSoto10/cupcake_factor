@@ -7,15 +7,25 @@ from wtforms import StringField, FloatField
 db = SQLAlchemy()
 
 class Cupcake(db.Model):
-        id = db.Column(db.Integer,
+    __tablename__ = 'cupcakes'
+    id = db.Column(db.Integer,
                    primary_key=True,
                    autoincrement=True)
-        flavor = db.Column(db.String(50),
+    flavor = db.Column(db.String(50),
                      nullable=False,
                      )
-        size = db.Column(db.String(30), nullable=False)
-        rating = db.Column(db.Float(), nullable=False)
-        image = db.Column(db.String, nullable=False, default=" https://tinyurl.com/demo-cupcake")
+    size = db.Column(db.String(30), nullable=False)
+    rating = db.Column(db.Float(), nullable=False)
+    image = db.Column(db.String, nullable=False, default=" https://tinyurl.com/demo-cupcake")
+    def serializer_cupcakes(self):
+            return {
+                "id": self.id,
+                "flavor": self.flavor,
+                "size": self.size,
+                "rating": self.rating,
+                "image": self.image
+            }
+
 
     
 
